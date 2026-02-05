@@ -1,0 +1,20 @@
+// This application demonstrates how to create a dynamic measurement ruler in C#. It uses NumericUpDown controls to adjust the maximum value and pixels-per-unit (PPM), automatically redrawing a bitmap with scaled tick marks and coordinate labels.
+
+private void DrawRuler(){
+    int height;
+    Bitmap rulerBitmap=new Bitmap(pictureBox1.Width,pictureBox1.Height);
+    Graphics g=Graphics.FromImage(rulerBitmap);
+    Pen pen=new Pen(Color.HotPink);
+    for(int i=0;i<=val_max*ppm;i++){
+        int x=i*pictureBox1.Width/(val_max*ppm);
+        if(i%ppm==0)height=20;
+        else height=10;
+        g.DrawLine(pen,x,0,x,height);
+        if(i%ppm==0){
+            string value=((double)i/ppm).ToString("0.##");
+            SizeF textSize=g.MeasureString(value,this.Font);
+            g.DrawString(value,this.Font,Brushes.IndianRed,new PointF(x-textSize.Width/2,height));
+        }
+    }
+    pictureBox1.Image=rulerBitmap;
+}
