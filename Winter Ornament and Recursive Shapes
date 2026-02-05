@@ -1,0 +1,24 @@
+// This program generates scalable winter-themed ornaments. It features a switch-case logic to draw different geometric patterns (ellipses, lines) using random colors and recursive-style loops to create nested shapes.
+
+private void DrawOrnament(int caseNum,int x0,int h){
+    switch(caseNum){
+        case 1:
+            for(int i=0;i<10;i+=2){
+                desen.DrawEllipse(creion_rosu,x0+3+i,h/2+i,h-3-2*i,h-2*10);
+                Pen creion_multicolor=new Pen(Color.FromArgb(n.Next(255),n.Next(255),n.Next(255)));
+                desen.DrawEllipse(creion_multicolor,x0+18,h/2+15,h-33,h-30);
+            }
+            break;
+        case 2:
+            desen.DrawLine(creion_rosu,x0+3,h*4/3,x0+h/2,h/2);
+            desen.DrawLine(creion_verde,x0+3,h*4/3,x0+h-3,h*4/3);
+            desen.DrawLine(creion_verde,x0+h/2,h/2,x0+h-3,h*4/3);
+            break;
+        case 3:
+            for(int i=0;i<25;i+=5){
+                Pen creion_multicolor=new Pen(Color.FromArgb(n.Next(255),n.Next(255),n.Next(255)));
+                desen.DrawEllipse(creion_multicolor,x0+3+i,h/2+i,h-3-i*2,h-i*2);
+            }
+            break;
+    }
+}
